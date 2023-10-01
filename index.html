@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Movies App" />
+    <meta name="keywords" content="HTML, CSS, JavaScript , JQuery" />
+    <meta name="author" content="Ahmed Adnan" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <link rel="stylesheet" href="css/all.min.css" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="icon" href="img/logo.png" />
+    <title>Movie App</title>
+  </head>
+  <body>
+    <div
+      class="loading-screen position-fixed bg-black top-0 bottom-0 justify-content-center align-items-center w-100 vh-100"
+    >
+      <div class="sk-chase">
+        <div class="sk-chase-dot"></div>
+        <div class="sk-chase-dot"></div>
+        <div class="sk-chase-dot"></div>
+        <div class="sk-chase-dot"></div>
+        <div class="sk-chase-dot"></div>
+        <div class="sk-chase-dot"></div>
+      </div>
+    </div>
+    <button id="btnUp" class="btn bg-color p-3 border-0 text-white">
+      <i class="fas fa-arrow-up fa-2x"></i>
+    </button>
+    <!--Start Section Side Bar-->
+    <section class="side-navbar position-fixed vh-100 d-flex font-segeo">
+      <div
+        class="inner-side bg-black d-flex flex-column justify-content-between"
+      >
+        <div class="items-link text-white p-3 overflow-hidden">
+          <ul class="list-unstyled">
+            <li id="nowPlaying">Now Playing</li>
+            <li id="popular">Popular</li>
+            <li id="topRated">Top Rated</li>
+            <li id="trending">Trending</li>
+            <li id="upComing">UpComing</li>
+            <li id="contactUS">Contact Us</li>
+          </ul>
+        </div>
+        <div class="footer-side p-3">
+          <div class="icon text-white">
+            <ul class="list-unstyled d-flex justify-content-between w-25">
+              <li>
+                <i class="fa-brands fa-facebook-f"></i>
+              </li>
+              <li>
+                <i class="fa-brands fa-twitter"></i>
+              </li>
+              <li>
+                <i class="fa-solid fa-globe"></i>
+              </li>
+            </ul>
+          </div>
+          <p class="text-light">
+            Copyright © 2022 All Rights Reserved. <br />Created by
+            <span>Housam Ramadan</span>
+          </p>
+        </div>
+      </div>
+      <div
+        class="tap-side bg-white d-flex flex-column justify-content-between align-items-center p-2"
+      >
+        <img src="img/logo.png" class="logo" alt="logo" />
+
+        <i class="fa-solid closeNav fa-align-justify fa-2x"></i>
+        <div>
+          <i class="fa-solid d-block fa-globe"></i>
+          <i class="fa-solid fa-share-nodes"></i>
+        </div>
+      </div>
+    </section>
+    <!--End Section Side Bar-->
+    <!-- input search -->
+    <section class="search">
+      <div class="container d-flex justify-content-center py-5 d-flex">
+        <input
+          type="text"
+          placeholder="search..."
+          class="form-control rounded-4 w-50"
+          id="searchInput"
+        />
+      </div>
+    </section>
+    <section class="movies">
+      <div class="container">
+        <div class="row gx-5 gy-4 text-center" id="showMovies"></div>
+      </div>
+    </section>
+    <section
+      class="contact position-relative top-50 vh-100 d-flex justify-content-center align-items-center text-center d-none"
+    >
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-md-6">
+            <input
+              class="form-control"
+              onkeyup="getValidation()"
+              type="text"
+              id="inputName"
+              placeholder="Enter Your Name"
+            />
+            <div id="alertName" class="alert alert-danger d-none mt-1">
+              <span>Special Characters and numbers are not allowed</span>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <input
+              class="form-control"
+              type="email"
+              id="inputEmail"
+              placeholder="Enter Your Email"
+            />
+            <div id="alertEmail" class="alert alert-danger d-none mt-1">
+              <span>Email not valid *example@yyy.zzz</span>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <input
+              class="form-control"
+              type="text"
+              id="inputPhone"
+              placeholder=" Enter Your phone"
+            />
+            <div id="alertPhone" class="alert d-none alert-danger mt-1">
+              <span>Enter valid Phone Number</span>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <input
+              class="form-control"
+              type="number"
+              id="inputAge"
+              placeholder=" Enter Your Age"
+            />
+            <div id="alertAge" class="alert d-none alert-danger mt-1">
+              <span>Enter valid Age </span>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <input
+              class="form-control"
+              type="password"
+              id="inputPassword"
+              placeholder=" Enter Your password"
+            />
+            <div id="alertPassword" class="alert d-none alert-danger mt-1">
+              <span
+                >Enter valid password *Minumim 8 characters , at least one
+                letter , special character and number
+              </span>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <input
+              class="form-control"
+              type="password"
+              id="inputRePassword"
+              placeholder="REpassword"
+            />
+            <div id="alertRePassword" class="alert d-none alert-danger mt-1">
+              <span> Enter valid repassword </span>
+            </div>
+          </div>
+        </div>
+        <button id="sub" disabled class="btn btn-outline-danger px-3 mt-5">
+          submit
+        </button>
+      </div>
+    </section>
+    <!-- contact -->
+    <section class="contact py-5">
+      <div class="container">
+        <h3 class="font-segeo text-white">Contact Us</h3>
+        <div class="row gy-4">
+          <div class="col-md-6">
+            <input
+              type="text"
+              class="form-control"
+              id="userName"
+              placeholder="Enter Your Name"
+            />
+            <div class="error"></div>
+          </div>
+          <div class="col-md-6">
+            <input
+              type="email"
+              id="userEmail"
+              class="form-control"
+              placeholder="Enter Your Email"
+            />
+            <div class="error"></div>
+          </div>
+          <div class="col-md-6">
+            <input
+              type="number"
+              id="userPhone"
+              class="form-control"
+              placeholder="Enter Your phone"
+            />
+            <div class="error"></div>
+          </div>
+          <div class="col-md-6">
+            <input
+              type="number"
+              class="form-control"
+              id="userAge"
+              placeholder="Enter Your age"
+            />
+            <div class="error"></div>
+          </div>
+          <div class="col-md-6">
+            <input
+              type="password"
+              id="userPassword"
+              class="form-control"
+              placeholder="password"
+            />
+            <div class="error"></div>
+          </div>
+          <div class="col-md-6">
+            <input
+              type="password"
+              class="form-control"
+              id="#userRePassword"
+              placeholder="REpassword"
+            />
+            <div class="error"></div>
+          </div>
+        </div>
+        <button id="submit" class="btn btn-outline-light my-3">Submit</button>
+      </div>
+    </section>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
